@@ -6,6 +6,9 @@ import pyautogui as pya
 import time
 
 pya.PAUSE = 0.15
+# defs
+
+# defs
 
 # lendo o excel archive
 wb = load_workbook(r'C:\Users\yury.sell\Desktop\.Net\schfitas\400 - 30 dias.xltx')
@@ -50,11 +53,10 @@ for i in range(1, sheet.max_row + 1):
 document.save('tab.docx')
 # salva o doc word
 
-
 pya.hotkey('win', 'r')
 pya.write(r'C:\Users\yury.sell\Desktop\.Net\tab.docx')
 pya.press('enter')
-time.sleep(1)
+pya.sleep(1)
 
 # tirando as primeiras linhas
 pya.press('left')
@@ -64,36 +66,8 @@ for i in range(7):
     pya.press('x')
     pya.press('l')
     pya.keyUp('alt')
-time.sleep(1.5)
+time.sleep(0.1)
 # tirando as primeiras linhas
-
-# retira as "semanas"
-for i in range(2):
-    pya.keyDown('alt')
-    time.sleep(1)
-    pya.press('c')
-    pya.hotkey('f', 's')
-    pya.press('z')
-    pya.keyUp('alt')
-    pya.write('semana')
-
-    pya.press('alt')
-    time.sleep(1)
-    pya.hotkey('j', 'l')
-    pya.press('x')
-    pya.press('l')
-while True:
-    try:
-        location = pya.locateOnScreen(r'C:\Users\yury.sell\Desktop\.Net\schfitas\1close.png', grayscale=True)
-        if location == None:
-            print("not found yet")
-        elif location is not None:
-            pya.click(location.left + location.width/2, location.top + location.height/2)
-            break
-    except Exception as e:
-        print(str(e))
-    time.sleep(0)   
-# retira as "semanas"
 
 # size
 pya.keyDown('alt')
@@ -129,24 +103,35 @@ pya.write('25')
 pya.press('enter')
 # size
 
-# spacement
-pya.keyDown('alt')
-pya.sleep(1)
-pya.hotkey('j', 'l')
-pya.press('r')
-pya.press('b')
-pya.keyUp('alt')
+# retira as "semanas"
+for i in range(2):
+    pya.keyDown('alt')
+    pya.sleep(1)
+    pya.press('c')
+    pya.hotkey('f', 's')
+    pya.press('z')
+    pya.keyUp('alt')
+    pya.write('semana')
 
-pya.keyDown('alt')
-pya.sleep(1)
-pya.hotkey('j', 'l')
-pya.hotkey('t', 'a')
-pya.keyUp('alt')
-pya.write('0')
-pya.press('enter')
-# spacement
+    pya.press('alt')
+    pya.sleep(1)
+    pya.hotkey('j', 'l')
+    pya.press('x')
+    pya.press('l')
+while True:
+    try:
+        location = pya.locateOnScreen(r'C:\Users\yury.sell\Desktop\.Net\schfitas\1close.png', grayscale=True)
+        if location == None:
+            print("not found yet")
+        elif location is not None:
+            pya.click(location.left + location.width/2, location.top + location.height/2)
+            break
+    except Exception as e:
+        print(str(e))
+    time.sleep(0)   
+# retira as "semanas"
 
-# laragura
+# select cell y remove laragura
 pya.keyDown('alt')
 pya.sleep(1)
 pya.hotkey('j', 'l')
@@ -161,7 +146,7 @@ pya.hotkey('i', 'l')
 pya.keyUp('alt')
 pya.write('0')
 pya.press('enter')
-# laragura
+# select cell y remove laragura
 
 # mudando a folha pra paisagem
 while True:
@@ -199,7 +184,6 @@ while True:
             break
     except Exception as e:
         print(str(e))
-time.sleep(1.5)
 # mudando o formato da folha pra a4 
 
 # select cell y remove spacement
@@ -216,16 +200,16 @@ pya.press('n')
 pya.keyUp('alt')
 # select cell y remove spacement
 
-#  selecionando a tabela e botando a borda
+# selecionando a tabela e botando a borda
 pya.keyDown('alt')
-time.sleep(1.5)
+pya.sleep(1.5)
 pya.hotkey('j', 'l')
 pya.press('r')
 pya.press('b')
 pya.keyUp('alt')
 
 pya.keyDown('alt')
-time.sleep(1.5)
+pya.sleep(1.5)
 pya.hotkey('j', 't')
 pya.hotkey('b', '1')
 pya.press('t')
@@ -236,7 +220,7 @@ pya.press('pageup')
 
 # mesclando as celulas
 # for i in range(1, sheet.max_row + 1):
-for i in range(3):
+for i in range(5):
     pya.keyDown('alt')
     pya.hotkey('j', 'l')
     pya.press('r')
@@ -249,7 +233,6 @@ for i in range(3):
     pya.press('down')
 # mesclando as celulas
 # pya.hotkey('ctrl', 'home')
-
 
 # save
 while True:
